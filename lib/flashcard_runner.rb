@@ -19,7 +19,6 @@ def start(deck)
         puts "\nThis is card number #{round.turns.size + 1} out of #{deck.count}."
         puts round.current_card.question
         user_input = gets.chomp
-        puts user_input
         turn_taken = round.take_turn(user_input)
         puts turn_taken.feedback
     end
@@ -28,7 +27,7 @@ def start(deck)
         categories = deck.cards.map do |category|
             category.category
         end
-        categories.each do |category|
+        categories.uniq.each do |category|
             puts "#{category} - #{round.percent_correct_by_category(category).to_i} % correct"
         end
     
